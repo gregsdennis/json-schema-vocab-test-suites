@@ -1,0 +1,6 @@
+{
+  "description": "$defs is disallowed",
+  "data": {
+    "$defs": "/custom"
+  }
+}

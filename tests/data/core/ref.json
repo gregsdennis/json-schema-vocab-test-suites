@@ -1,0 +1,6 @@
+{
+  "description": "$ref is disallowed",
+  "data": {
+    "$ref": "/custom"
+  }
+}

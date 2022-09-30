@@ -1,0 +1,6 @@
+{
+  "description": "$dynamicRef is disallowed",
+  "data": {
+    "$dynamicRef": "/custom"
+  }
+} 

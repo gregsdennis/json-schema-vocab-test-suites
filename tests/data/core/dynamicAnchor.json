@@ -1,0 +1,6 @@
+{
+  "description": "$dynamicAnchor is disallowed",
+  "data": {
+    "$dynamicAnchor": "/custom"
+  }
+} 

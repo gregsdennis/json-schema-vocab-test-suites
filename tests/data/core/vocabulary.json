@@ -1,0 +1,6 @@
+{
+  "description": "$vocabulary is disallowed",
+  "data": {
+    "$vocabulary": "/custom"
+  }
+} 

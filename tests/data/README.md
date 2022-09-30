@@ -1,3 +1,5 @@
 The tests for this folder also depend on fetching data from external sources.  The `external-sources` folder houses this data.  This folder will be referenced using `http://localhost:1234/`.
 
-In addition to the normal validation tests, there are also error condition tests where the implementation is expected to fail.  Where this is the case, the test will have `"error": true` instead of the `valid` property.
+The tests in the root of the suite are validation tests.  Some of these cover error conditions where the implementation is expected to fail.  Where this is the case, the test will have `"error": true` instead of the `valid` property.
+
+The `core` folder contains a file for each of the Core Vocabulary keywords.  The files attempt to declare a `data` keyword using the associated keyword.  As these are explicitly disallowed, it is expected that these schemas will fail.  The failure may occur on load or at evaluation time.  It is expected that the runner will be built appropriately to test the implementation's expected runtime behavior.

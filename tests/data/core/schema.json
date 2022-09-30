@@ -1,0 +1,6 @@
+{
+  "description": "$schema is disallowed",
+  "data": {
+    "$schema": "/custom"
+  }
+} 

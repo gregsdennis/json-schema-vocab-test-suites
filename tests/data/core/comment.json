@@ -1,0 +1,6 @@
+{
+  "description": "$comment is disallowed",
+  "data": {
+    "$comment": "/custom"
+  }
+} 
