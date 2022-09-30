@@ -1,0 +1,100 @@
+[
+  {
+    "description": "minimum is sourced from instance",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "foo": {
+          "type": "number",
+          "data": {
+            "minimum": "/value-minimum"
+          }
+        }
+      }
+    },
+    "tests": [
+      {
+        "description": "value > lookup is valid",
+        "data": {
+          "foo": 5,
+          "value-minimum": 0
+        },
+        "valid": true
+      },
+      {
+        "description": "value == lookup is valid",
+        "data": {
+          "foo": 0,
+          "value-minimum": 0
+        },
+        "valid": true
+      },
+      {
+        "description": "value < lookup is invalid",
+        "data": {
+          "foo": -5,
+          "value-minimum": 0
+        },
+        "valid": false
+      }
+    ]
+  },
+  {
+    "description": "minimum is sourced from schema",
+    "schema": {
+      "type": "number",
+      "values": {
+        "minimum": 0
+      },
+      "data": {
+        "minimum": "#/values/minimum"
+      }
+    },
+    "tests": [
+      {
+        "description": "value > lookup is valid",
+        "data": 5,
+        "valid": true
+      },
+      {
+        "description": "value == lookup is valid",
+        "data": 0,
+        "valid": true
+      },
+      {
+        "description": "value < lookup is invalid",
+        "data": -5,
+        "valid": false
+      }
+    ]
+  },
+  {
+    "description": "minimum is sourced from schema",
+    "schema": {
+      "type": "number",
+      "values": {
+        "minimum": 0
+      },
+      "data": {
+        "minimum": "http://localhost:1234/values.json#/value-minimum"
+      }
+    },
+    "tests": [
+      {
+        "description": "value > lookup is valid",
+        "data": 5,
+        "valid": true
+      },
+      {
+        "description": "value == lookup is valid",
+        "data": 0,
+        "valid": true
+      },
+      {
+        "description": "value < lookup is invalid",
+        "data": -5,
+        "valid": false
+      }
+    ]
+  }
+]
