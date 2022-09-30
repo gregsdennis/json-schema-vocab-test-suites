@@ -1,0 +1,3 @@
+The tests for this folder also depend on fetching data from external sources.  The `external-sources` folder houses this data.  This folder will be referenced using `http://localhost:1234/`.
+
+In addition to the normal validation tests, there are also error condition tests where the implementation is expected to fail.  Where this is the case, the test will have `"error": true` instead of the `valid` property.

@@ -36,6 +36,21 @@
           "value-minimum": 0
         },
         "valid": false
+      },
+      {
+        "description": "lookup fails",
+        "data": {
+          "foo": -5
+        },
+        "error": true
+      },
+      {
+        "description": "lookup is invalid for minimum",
+        "data": {
+          "foo": -5,
+          "value-minimum": "string"
+        },
+        "error": true
       }
     ]
   },
@@ -69,6 +84,41 @@
     ]
   },
   {
+    "description": "schema source lookup fails",
+    "schema": {
+      "type": "number",
+      "data": {
+        "minimum": "#/values/minimum"
+      }
+    },
+    "tests": [
+      {
+        "description": "lookup fails",
+        "data": 5,
+        "error": true
+      }
+    ]
+  },
+  {
+    "description": "schema source lookup is invalid for minimum",
+    "schema": {
+      "type": "number",
+      "values": {
+        "minimum": "string"
+      },
+      "data": {
+        "minimum": "#/values/minimum"
+      }
+    },
+    "tests": [
+      {
+        "description": "invalid value",
+        "data": 5,
+        "error": true
+      }
+    ]
+  },
+  {
     "description": "minimum is sourced from schema",
     "schema": {
       "type": "number",
@@ -94,6 +144,38 @@
         "description": "value < lookup is invalid",
         "data": -5,
         "valid": false
+      }
+    ]
+  },
+  {
+    "description": "external source lookup fails",
+    "schema": {
+      "type": "number",
+      "data": {
+        "minimum": "http://localhost:1234/not-found.json#/value-minimum"
+      }
+    },
+    "tests": [
+      {
+        "description": "lookup fails",
+        "data": 5,
+        "error": true
+      }
+    ]
+  },
+  {
+    "description": "external source lookup is invalid for minimum",
+    "schema": {
+      "type": "number",
+      "data": {
+        "minimum": "http://localhost:1234/invalid.json#/value-minimum"
+      }
+    },
+    "tests": [
+      {
+        "description": "invalid value",
+        "data": 5,
+        "error": true
       }
     ]
   }
