@@ -1,0 +1,96 @@
+[
+  {
+    "description": "conditions based on comparisons between data values",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "x": {
+          "type": "number"
+        },
+        "y": {
+          "type": "number"
+        },
+        "foo": true
+      },
+      "if": {
+        "properties": {
+          "y": {
+            "data": {
+              "minimum": "/x"
+            }
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "foo": {
+            "const": "bar"
+          }
+        }
+      },
+      "else": {
+        "properties": {
+          "foo": {
+            "const": "baz"
+          }
+        }
+      }
+    },
+    "tests": [
+      {
+        "description": "foo == bar when x < y - valid",
+        "data": {
+          "x": 0,
+          "y": 1,
+          "foo": "bar"
+        },
+        "valid": true
+      },
+      {
+        "description": "foo == bar when x < y - invalid",
+        "data": {
+          "x": 0,
+          "y": 1,
+          "foo": "quux"
+        },
+        "valid": false
+      },
+      {
+        "description": "foo == bar when x == y - valid",
+        "data": {
+          "x": 0,
+          "y": 0,
+          "foo": "bar"
+        },
+        "valid": true
+      },
+      {
+        "description": "foo == bar when x == y - invalid",
+        "data": {
+          "x": 0,
+          "y": 0,
+          "foo": "quux"
+        },
+        "valid": false
+      },
+      {
+        "description": "foo == baz when x > y - valid",
+        "data": {
+          "x": 0,
+          "y": -1,
+          "foo": "baz"
+        },
+        "valid": true
+      },
+      {
+        "description": "foo == baz when x > y - invalid",
+        "data": {
+          "x": 0,
+          "y": -1,
+          "foo": "quux"
+        },
+        "valid": false
+      }
+    ]
+  }
+]
