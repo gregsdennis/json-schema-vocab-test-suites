@@ -1,0 +1,45 @@
+[
+  {
+    "description": "specifying a schema in the instance",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "spec": {
+          "$ref": "https://json-schema.org/draft/2020-12/schema"
+        },
+        "foo": {
+          "type": "array",
+          "data": {
+            "items": "/spec"
+          }
+        }
+      }
+    },
+    "tests": [
+      {
+        "description": "string passes user-specified schema",
+        "data": {
+          "spec": {
+            "type": "string"
+          },
+          "foo": [
+            "some random string"
+          ]
+        },
+        "valid": true
+      },
+      {
+        "description": "string fails user-specified schema",
+        "data": {
+          "spec": {
+            "type": "integer"
+          },
+          "foo": [
+            "strings are invalid"
+          ]
+        },
+        "valid": false
+      }
+    ]
+  }
+]

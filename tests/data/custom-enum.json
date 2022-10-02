@@ -1,0 +1,39 @@
+[
+  {
+    "description": "specifying an enum in the instance",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "values": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "selection": {
+          "data": {
+            "enum": "/values"
+          }
+        }
+      }
+    },
+    "tests": [
+      {
+        "description": "selection not in values is invalid",
+        "data": {
+          "values": ["alpha", "beta", "gamma"],
+          "selection": "beta"
+        },
+        "valid": true
+      },
+      {
+        "description": "selection in values is valid",
+        "data": {
+          "values": ["alpha", "beta", "gamma"],
+          "selection": "omega"
+        },
+        "valid": false
+      }
+    ]
+  }
+]
