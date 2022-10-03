@@ -178,5 +178,45 @@
         "error": true
       }
     ]
+  },
+  {
+    "description": "instance lookup for property equality",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "left": true,
+        "right": {
+          "data": {
+            "const": "/left"
+          }
+        }
+      }
+    },
+    "tests": [
+      {
+        "description": "same number is valid",
+        "data": {
+          "left": 5,
+          "right": 5
+        },
+        "valid": true
+      },
+      {
+        "description": "same string is valid",
+        "data": {
+          "left": "foo",
+          "right": "foo"
+        },
+        "valid": true
+      },
+      {
+        "description": "different values is invalid",
+        "data": {
+          "left": "foo",
+          "right": "bar"
+        },
+        "valid": false
+      }
+    ]
   }
 ]
